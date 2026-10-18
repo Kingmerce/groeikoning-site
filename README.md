@@ -1,6 +1,6 @@
 # GroeiKoning website
 
-Next.js-site voor GroeiKoning: diensten, werkwijze, portfolio, reviews, FAQ, een formulier met kwalificatievragen (verstuurd via Resend) en een Calendly-embed.
+Next.js-site voor GroeiKoning met animaties (GSAP + Lenis): diensten, werk, werkwijze, over mij, reviews, FAQ, een formulier met kwalificatievragen (verstuurd via Resend) en een Calendly-embed.
 
 ## Content aanpassen
 
@@ -8,8 +8,11 @@ Alle teksten staan in **`lib/content.ts`**:
 
 - **Reviews**: vervang de drie voorbeeldreviews door je echte Google-reviews en zet `placeholder: false` (of haal die regel weg). Placeholders zie je alleen lokaal; op de live site worden ze verborgen.
 - **`googleReviewsUrl`**: zet hier de link naar je Google-bedrijfsprofiel.
-- **Portfolio**: zet screenshots in `public/portfolio/` (bijv. `van-duijn.jpg`, liggend, ±1600×1000) en vul per project `image` en `url` in. Vul ook de plaats van Rens van Klaveren in.
+- **Portfolio**: zet screenshots in `public/portfolio/` (bijv. `van-duijn.jpg`, liggend, ±1600×1000) en vul per project `image` en `url` in.
+- **Telefoonnummer**: vul `phone` in, dan verschijnt het in de header, bij contact en in de footer.
+- **Foto**: zet je foto in `public/` (bijv. `thom.jpg`, staand) en vul `photo: "/thom.jpg"` in. Zolang dat leeg is staat er een grote T.
 - Logo: `public/logo.png` (origineel) en `public/logo-light.png` (voor donkere achtergronden). Favicon: `app/icon.png`.
+- Animaties staan in `components/Motion.tsx`, opmaak in `app/globals.css`.
 
 ## Lokaal draaien
 

@@ -1,51 +1,71 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { site } from "@/lib/content";
 
 const links = [
+  { href: "#werk", label: "Werk" },
   { href: "#diensten", label: "Diensten" },
   { href: "#werkwijze", label: "Werkwijze" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#reviews", label: "Reviews" },
+  { href: "#over", label: "Over mij" },
   { href: "#faq", label: "FAQ" },
 ];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    let last = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 12);
+      setHidden(y > 400 && y > last + 2);
+      if (y < last - 2) setHidden(false);
+      last = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.documentElement.classList.toggle("menu-open", open);
+  }, [open]);
+
   return (
-    <header className={`site-header ${scrolled ? "scrolled" : ""} ${open ? "open" : ""}`}>
-      <div className="container header-inner">
-        <a href="#top" className="logo" aria-label="GroeiKoning – naar boven">
-          <img src="/logo-light.png" alt="GroeiKoning webdesign & marketing" width={184} height={24} />
+    <header className={`hdr ${scrolled ? "is-scrolled" : ""} ${hidden && !open ? "is-hidden" : ""} ${open ? "is-open" : ""}`}>
+      <div className="wrap hdr-in">
+        <a href="#top" className="hdr-logo" aria-label="GroeiKoning, naar boven" onClick={() => setOpen(false)}>
+          <img src="/logo-light.png" alt="GroeiKoning webdesign & marketing" width={215} height={28} />
         </a>
-        <nav className="nav" aria-label="Hoofdmenu">
-          {links.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
-              {l.label}
+        <nav className="hdr-nav" aria-label="Hoofdmenu">
+          {links.map((l, i) => (
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)} style={{ ["--i" as string]: i }}>
+              <span>{l.label}</span>
             </a>
           ))}
-          <a href="#contact" className="btn btn-primary btn-sm nav-cta" onClick={() => setOpen(false)}>
-            Plan een kennismaking
-          </a>
         </nav>
-        <button
-          className="menu-toggle"
-          aria-label={open ? "Menu sluiten" : "Menu openen"}
-          aria-expanded={open}
-          onClick={() => setOpen(!open)}
-        >
-          <span />
-          <span />
-        </button>
+        <div className="hdr-right">
+          {site.phone && (
+            <a className="hdr-phone mono" href={`tel:${site.phone.replace(/\s/g, "")}`}>
+              {site.phone}
+            </a>
+          )}
+          <a href="#contact" className="btn btn-blue btn-sm" data-magnetic onClick={() => setOpen(false)}>
+            Plan een gesprek
+          </a>
+          <button
+            className="hdr-toggle"
+            aria-label={open ? "Menu sluiten" : "Menu openen"}
+            aria-expanded={open}
+            onClick={() => setOpen(!open)}
+          >
+            <span />
+            <span />
+          </button>
+        </div>
       </div>
     </header>
   );

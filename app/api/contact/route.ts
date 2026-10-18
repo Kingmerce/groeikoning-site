@@ -2,16 +2,15 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
 type Payload = {
+  needs?: string[];
   businessType?: string;
   hasWebsite?: string;
   websiteUrl?: string;
-  goals?: string[];
   timing?: string;
   name?: string;
   company?: string;
   phone?: string;
   email?: string;
-  city?: string;
   message?: string;
   website_hp?: string; // honeypot
 };
@@ -53,11 +52,10 @@ export async function POST(req: Request) {
     ["Bedrijf", data.company ?? ""],
     ["Telefoon", data.phone ?? ""],
     ["E-mail", email],
-    ["Plaats", data.city ?? ""],
     ["Type bedrijf", data.businessType ?? ""],
+    ["Hulp bij", (data.needs ?? []).join(", ")],
     ["Heeft website", data.hasWebsite ?? ""],
     ["Huidige website", data.websiteUrl ?? ""],
-    ["Doel", (data.goals ?? []).join(", ")],
     ["Wanneer starten", data.timing ?? ""],
     ["Opmerking", data.message ?? ""],
   ];

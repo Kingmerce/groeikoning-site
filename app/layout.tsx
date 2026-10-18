@@ -3,12 +3,12 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://groeikoning.nl"),
-  title: "GroeiKoning | Webdesign & marketing voor bouw en installatie",
+  title: "GroeiKoning | Websites die aanvragen opleveren",
   description:
-    "Websites en online marketing op maat voor loodgieters, dakdekkers, installateurs en aannemers. Meer aanvragen uit jouw regio.",
+    "Websites op maat voor MKB en lokale bedrijven. Snel live, altijd bereikbaar en gericht op meer aanvragen. Ook SEO, Google & Meta Ads en onderhoud.",
   openGraph: {
-    title: "GroeiKoning | Webdesign & marketing voor bouw en installatie",
-    description: "Websites en online marketing op maat voor bouw- en installatiebedrijven.",
+    title: "GroeiKoning | Websites die aanvragen opleveren",
+    description: "Websites op maat voor MKB en lokale bedrijven. Snel live, altijd bereikbaar, gericht op aanvragen.",
     url: "https://groeikoning.nl",
     siteName: "GroeiKoning",
     locale: "nl_NL",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = { themeColor: "#1F272F" };
+export const viewport: Viewport = { themeColor: "#0B1622" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Work+Sans:wght@500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
           rel="stylesheet"
         />
       </head>
