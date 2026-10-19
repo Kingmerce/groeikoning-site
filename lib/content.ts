@@ -6,7 +6,7 @@ export const site = {
   email: "info@groeikoning.nl",
   // Telefoonnummer: verschijnt in de header, bij contact en in de footer (klikbaar)
   phone: "06 17 16 69 11",
-  calendlyUrl: "https://calendly.com/groeikoning-info/plan-een-meeting-60min",
+  calendlyUrl: "https://calendly.com/groeikoning-info/kennismakingsgesprek",
   address: "Frankenburg 46, 2235 AR Valkenburg",
   kvk: "96614676",
   btw: "NL005220497B72",
