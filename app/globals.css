@@ -1986,3 +1986,45 @@ html.js .step:not(.is-on) {
 .ftr-grid .ico-link:hover .arrow {
   transform: translate(2px, -2px);
 }
+
+/* Bel- en mailicoon in de header (alleen mobiel) */
+.hdr-icon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line-dark);
+  place-items: center;
+  color: var(--on-dark);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.hdr-icon .ico {
+  color: currentColor;
+}
+.hdr-icon:hover,
+.hdr-icon:active {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+@media (max-width: 860px) {
+  .hdr-icon {
+    display: grid;
+  }
+  .hdr-right {
+    gap: 8px;
+  }
+}
+@media (max-width: 360px) {
+  .hdr-logo img {
+    height: 22px;
+  }
+}
+.hdr-icon,
+.hdr-toggle {
+  flex-shrink: 0;
+}
+@media (max-width: 860px) {
+  .hdr-phone.ico-link {
+    display: none !important;
+  }
+}

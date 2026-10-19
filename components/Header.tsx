@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { site } from "@/lib/content";
-import { ArrowIcon, PhoneIcon } from "@/components/Icons";
+import { ArrowIcon, MailIcon, PhoneIcon } from "@/components/Icons";
 
 const links = [
   { href: "#werk", label: "Werk" },
@@ -50,11 +50,13 @@ export default function Header() {
         </nav>
         <div className="hdr-right">
           {site.phone && (
-            <a className="hdr-phone mono ico-link" href={`tel:${site.phone.replace(/\s/g, "")}`}>
+            <a className="hdr-icon" href={`tel:${site.phone.replace(/\s/g, "")}`} aria-label={`Bel ${site.phone}`}>
               <PhoneIcon />
-              {site.phone}
             </a>
           )}
+          <a className="hdr-icon" href={`mailto:${site.email}`} aria-label={`Mail naar ${site.email}`}>
+            <MailIcon />
+          </a>
           <a href="#contact" className="btn btn-blue btn-sm" data-magnetic onClick={() => setOpen(false)}>
             Plan een gesprek
             <ArrowIcon />
