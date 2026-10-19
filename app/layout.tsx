@@ -3,12 +3,12 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://groeikoning.nl"),
-  title: "GroeiKoning | Websites die aanvragen opleveren",
+  title: "GroeiKoning | Online marketing & websites voor MKB",
   description:
-    "Websites op maat voor MKB en lokale bedrijven. Snel live, altijd bereikbaar en gericht op meer aanvragen. Ook SEO, Google & Meta Ads en onderhoud.",
+    "Websites, Google & Meta Ads, SEO, e-mailmarketing en branding voor MKB en lokale bedrijven. Alles onder één dak, snel geregeld en altijd bereikbaar.",
   openGraph: {
-    title: "GroeiKoning | Websites die aanvragen opleveren",
-    description: "Websites op maat voor MKB en lokale bedrijven. Snel live, altijd bereikbaar, gericht op aanvragen.",
+    title: "GroeiKoning | Online marketing & websites voor MKB",
+    description: "Websites, advertenties en online marketing voor MKB en lokale bedrijven. Alles onder één dak.",
     url: "https://groeikoning.nl",
     siteName: "GroeiKoning",
     locale: "nl_NL",

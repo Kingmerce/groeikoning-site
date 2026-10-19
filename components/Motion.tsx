@@ -96,6 +96,7 @@ export default function Motion() {
       );
 
       // USP-kaarten: stapelen, vorige kaart zakt weg
+      mm.add("(min-width: 1000px)", () => {
       const cards = gsap.utils.toArray<HTMLElement>(".usp-card");
       cards.forEach((card, i) => {
         if (i === cards.length - 1) return;
@@ -105,6 +106,7 @@ export default function Motion() {
           ease: "none",
           scrollTrigger: { trigger: cards[i + 1], start: "top bottom", end: "top 25%", scrub: true },
         });
+      });
       });
 
       // Algemene reveal
@@ -184,7 +186,7 @@ export default function Motion() {
       });
 
       // FOOTER: grote letters komen omhoog
-      gsap.from(".big-word span", {
+      gsap.from(".big-word-in > span", {
         yPercent: 100,
         duration: 1.2,
         ease: "expo.out",
@@ -259,8 +261,24 @@ export default function Motion() {
       faqHandlers.push([summary, h]);
     });
 
+    // Footer-woord passend maken op elke schermbreedte
+    const fitWord = () => {
+      const wrap = document.querySelector<HTMLElement>(".big-word");
+      const inner = wrap?.querySelector<HTMLElement>(".big-word-in");
+      if (!wrap || !inner) return;
+      wrap.style.fontSize = "";
+      const ratio = wrap.clientWidth / inner.scrollWidth;
+      if (isFinite(ratio) && ratio > 0)
+        wrap.style.fontSize = `${Math.min(parseFloat(getComputedStyle(wrap).fontSize) * ratio * 0.99, 240)}px`;
+    };
+    fitWord();
+    window.addEventListener("resize", fitWord);
+
     // Na het laden van fonts/afbeeldingen posities herberekenen
-    const refresh = () => ScrollTrigger.refresh();
+    const refresh = () => {
+      fitWord();
+      ScrollTrigger.refresh();
+    };
     window.addEventListener("load", refresh);
     document.fonts?.ready.then(refresh);
 
@@ -268,6 +286,7 @@ export default function Motion() {
       ctx.revert();
       document.removeEventListener("click", onClick);
       window.removeEventListener("load", refresh);
+      window.removeEventListener("resize", fitWord);
       faqHandlers.forEach(([s, h]) => s.removeEventListener("click", h));
       gsap.ticker.remove(raf);
       lenis?.destroy();

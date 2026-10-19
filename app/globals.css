@@ -283,6 +283,12 @@ summary:focus-visible {
 .hdr.is-hidden {
   transform: translateY(-100%);
 }
+.hdr.is-open {
+  transform: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: var(--ink);
+}
 .hdr-in {
   height: 76px;
   display: flex;
@@ -761,13 +767,15 @@ summary:focus-visible {
 }
 .art-funnel span {
   width: var(--w);
+  min-width: min(100%, 10.5rem);
+  max-width: 100%;
   text-align: center;
   padding: 14px 10px;
   border-radius: 12px;
   background: var(--paper-2);
   font-weight: 600;
   font-size: 0.95rem;
-  white-space: nowrap;
+  line-height: 1.25;
 }
 .art-funnel span.hot {
   background: var(--signal);
@@ -851,22 +859,7 @@ summary:focus-visible {
   transform: translateX(12px);
   font-stretch: 110%;
 }
-.svc-row.main .svc-title::after {
-  content: "Hoofddienst";
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  font-weight: 500;
-  vertical-align: top;
-  margin-left: 12px;
-  padding: 4px 8px;
-  border-radius: 99px;
-  background: var(--signal);
-  color: var(--ink);
-  position: relative;
-  top: 0.4em;
-}
+
 .svc-text {
   color: var(--muted-dark);
   transition: color 0.3s;
@@ -1427,6 +1420,15 @@ html.js .step:not(.is-on) {
   background: var(--ink);
   animation: none;
 }
+.contact-direct a {
+  text-decoration: none;
+  border-bottom: 1.5px solid transparent;
+  justify-self: end;
+  transition: border-color 0.2s;
+}
+.contact-direct a:hover {
+  border-color: currentColor;
+}
 .contact-direct {
   display: grid;
   gap: 6px;
@@ -1699,23 +1701,31 @@ html.js .step:not(.is-on) {
   color: var(--blue-hi);
 }
 .big-word {
-  display: flex;
-  justify-content: space-between;
   overflow: hidden;
   margin: 72px 0 24px;
   font-family: var(--display);
   font-weight: 900;
-  font-stretch: 125%;
-  font-size: clamp(2.6rem, 11.2vw, 11.5rem);
+  font-stretch: 110%;
+  font-size: 9.6vw;
   line-height: 0.82;
   letter-spacing: -0.04em;
   color: var(--ink-3);
+  white-space: nowrap;
+  text-align: center;
 }
-.big-word span {
+@media (min-width: 1360px) {
+  .big-word {
+    font-size: 8.6rem;
+  }
+}
+.big-word-in {
+  display: inline-block;
+}
+.big-word-in > span {
   display: inline-block;
   transition: color 0.4s;
 }
-.big-word span:hover {
+.big-word-in > span:hover {
   color: var(--blue);
 }
 .ftr-bottom {
@@ -1755,6 +1765,11 @@ html.js .step:not(.is-on) {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     min-height: 0;
+    position: relative;
+    top: auto;
+  }
+  .usp-card h2 {
+    font-size: clamp(2.6rem, 1.8rem + 4vw, 4rem);
   }
   .usp-art {
     grid-column: 1;
@@ -1799,6 +1814,9 @@ html.js .step:not(.is-on) {
   }
   .contact-direct {
     text-align: left;
+  }
+  .contact-direct a {
+    justify-self: start;
   }
 }
 
@@ -1938,4 +1956,33 @@ html.js .step:not(.is-on) {
 }
 .calendly-inline-widget:has(iframe) .cal-fallback {
   display: none;
+}
+
+/* E-mail/telefoon met icoon */
+.ico-link {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+}
+.ico {
+  flex-shrink: 0;
+  color: var(--blue);
+}
+.contact .ico {
+  color: var(--ink);
+}
+.hdr-phone .ico {
+  width: 16px;
+  height: 16px;
+}
+.btn .ico {
+  color: currentColor;
+  width: 16px;
+  height: 16px;
+}
+.ftr-grid .ico-link .arrow {
+  transition: transform 0.4s var(--ease);
+}
+.ftr-grid .ico-link:hover .arrow {
+  transform: translate(2px, -2px);
 }

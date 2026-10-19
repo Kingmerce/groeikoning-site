@@ -6,11 +6,11 @@ Next.js-site voor GroeiKoning met animaties (GSAP + Lenis): diensten, werk, werk
 
 Alle teksten staan in **`lib/content.ts`**:
 
-- **Reviews**: vervang de drie voorbeeldreviews door je echte Google-reviews en zet `placeholder: false` (of haal die regel weg). Placeholders zie je alleen lokaal; op de live site worden ze verborgen.
+- **Reviews**: staan in `reviews`. Voeg nieuwe Google-reviews toe in hetzelfde formaat.
 - **`googleReviewsUrl`**: zet hier de link naar je Google-bedrijfsprofiel.
 - **Portfolio**: zet screenshots in `public/portfolio/` (bijv. `van-duijn.jpg`, liggend, ±1600×1000) en vul per project `image` en `url` in.
 - **Telefoonnummer**: vul `phone` in, dan verschijnt het in de header, bij contact en in de footer.
-- **Foto**: zet je foto in `public/` (bijv. `thom.jpg`, staand) en vul `photo: "/thom.jpg"` in. Zolang dat leeg is staat er een grote T.
+- **Foto**: `public/thom.jpg` (staand, 4:5). Vervang het bestand om een andere foto te tonen.
 - Logo: `public/logo.png` (origineel) en `public/logo-light.png` (voor donkere achtergronden). Favicon: `app/icon.png`.
 - Animaties staan in `components/Motion.tsx`, opmaak in `app/globals.css`.
 

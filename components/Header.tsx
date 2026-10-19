@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { site } from "@/lib/content";
+import { ArrowIcon, PhoneIcon } from "@/components/Icons";
 
 const links = [
   { href: "#werk", label: "Werk" },
@@ -49,12 +50,14 @@ export default function Header() {
         </nav>
         <div className="hdr-right">
           {site.phone && (
-            <a className="hdr-phone mono" href={`tel:${site.phone.replace(/\s/g, "")}`}>
+            <a className="hdr-phone mono ico-link" href={`tel:${site.phone.replace(/\s/g, "")}`}>
+              <PhoneIcon />
               {site.phone}
             </a>
           )}
           <a href="#contact" className="btn btn-blue btn-sm" data-magnetic onClick={() => setOpen(false)}>
             Plan een gesprek
+            <ArrowIcon />
           </a>
           <button
             className="hdr-toggle"

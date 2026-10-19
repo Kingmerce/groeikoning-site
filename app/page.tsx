@@ -3,6 +3,7 @@ import LeadForm from "@/components/LeadForm";
 import CalendlyEmbed from "@/components/CalendlyEmbed";
 import PhoneDemo from "@/components/PhoneDemo";
 import Motion from "@/components/Motion";
+import { ArrowIcon, MailIcon, PhoneIcon } from "@/components/Icons";
 import { faqs, projects, reviews, services, site, steps, usps } from "@/lib/content";
 
 const isProd = process.env.NODE_ENV === "production";
@@ -23,9 +24,9 @@ function W({ text, className }: { text: string; className?: string }) {
 }
 
 const statement =
-  "De meeste websites zien er prima uit. En toch belt er niemand. Ik bouw websites met één doel: dat jouw ideale klant contact met je opneemt.";
+  "Veel ondernemers hebben een website, adverteren of posten op social media. En toch blijft het stil. Ik zorg dat alles samenwerkt met één doel: dat jouw ideale klant contact met je opneemt.";
 
-const marquee = ["Websites", "SEO", "Google Ads", "Meta Ads", "Onderhoud", "Hosting"];
+const marquee = ["Websites", "Google Ads", "Meta Ads", "SEO", "E-mailmarketing", "Branding", "Hosting"];
 
 function Arrow() {
   return (
@@ -61,18 +62,18 @@ export default function Home() {
           <div className="wrap hero-in">
             <div className="hero-copy">
               <p className="eyebrow" data-intro>
-                <span className="live" /> Webdesign voor MKB &amp; lokale bedrijven
+                <span className="live" /> Online marketing voor MKB &amp; lokale bedrijven
               </p>
               <h1 className="hero-title">
-                <W text="Websites die" />
+                <W text="Online" />
                 <span className="w hl">
-                  <span>aanvragen</span>
+                  <span>groeien</span>
                 </span>{" "}
-                <W text="opleveren." />
+                <W text="begint hier." />
               </h1>
               <p className="hero-lead" data-intro>
-                Ik ben {site.owner}. Ik bouw websites voor ondernemers die niet alleen mooi willen ogen, maar meer klanten
-                willen. Snel live, en je kunt me altijd bereiken.
+                Websites, advertenties en online marketing voor ondernemers die meer klanten willen. Alles onder één dak,
+                snel geregeld, en je kunt me altijd bereiken.
               </p>
               <div className="hero-ctas" data-intro>
                 <a href="#contact" className="btn btn-blue btn-lg" data-magnetic>
@@ -159,9 +160,9 @@ export default function Home() {
                   {i === 2 && (
                     <div className="art-funnel">
                       <span style={{ ["--w" as string]: "100%" }}>Bezoekers</span>
-                      <span style={{ ["--w" as string]: "72%" }}>Bekijken diensten</span>
-                      <span style={{ ["--w" as string]: "44%" }}>Klikken op contact</span>
-                      <span style={{ ["--w" as string]: "26%" }} className="hot">Aanvraag</span>
+                      <span style={{ ["--w" as string]: "82%" }}>Bekijken diensten</span>
+                      <span style={{ ["--w" as string]: "64%" }}>Klikken op contact</span>
+                      <span style={{ ["--w" as string]: "46%" }} className="hot">Aanvraag</span>
                     </div>
                   )}
                 </div>
@@ -183,7 +184,7 @@ export default function Home() {
             </div>
             <ul className="svc-list">
               {services.map((s, i) => (
-                <li key={s.title} className={`svc-row ${s.main ? "main" : ""}`}>
+                <li key={s.title} className="svc-row">
                   <a href="#contact" data-cursor="Bespreken">
                     <span className="svc-num mono">0{i + 1}</span>
                     <span className="svc-title">{s.title}</span>
@@ -318,12 +319,13 @@ export default function Home() {
               </h2>
               <div data-reveal>
                 <p>
-                  Ik heb GroeiKoning opgericht omdat ik te vaak websites zag die er netjes uitzien, maar niets opleveren.
-                  Ondernemers betalen veel geld, wachten maanden, en daarna blijft het stil.
+                  Ik heb GroeiKoning opgericht omdat ondernemers bij veel bureaus verdwijnen in een systeem: tickets,
+                  accountmanagers en dagen wachten op antwoord.
                 </p>
                 <p>
-                  Ik doe het anders. Ik werk snel, je spreekt altijd mij en niet een accountmanager, en alles wat ik maak
-                  is erop gericht dat jouw telefoon gaat.
+                  Bij mij spreek je altijd mij. Of het nu gaat om je website, je advertenties of je vindbaarheid: je belt
+                  of appt, en ik pak het op. Ik denk mee alsof het mijn eigen bedrijf is, en ik zeg eerlijk wat wel en niet
+                  werkt.
                 </p>
               </div>
               <a href="#contact" className="btn btn-blue" data-magnetic data-reveal>
@@ -408,15 +410,23 @@ export default function Home() {
                 Contact
               </p>
               <h2 className="contact-title" data-split>
-                <W text="Klaar voor meer" />
+                <W text="Klaar om te" />
                 <span className="w hl">
-                  <span>aanvragen?</span>
+                  <span>groeien?</span>
                 </span>
               </h2>
               <div className="contact-direct" data-reveal>
                 <span className="mono">Direct contact</span>
-                <span className="sel">{site.email}</span>
-                {site.phone && <span className="sel">{site.phone}</span>}
+                <a className="ico-link" href={`mailto:${site.email}`}>
+                <MailIcon />
+                {site.email}
+              </a>
+                {site.phone && (
+                <a className="ico-link" href={`tel:${site.phone.replace(/\s/g, "")}`}>
+                  <PhoneIcon />
+                  {site.phone}
+                </a>
+              )}
               </div>
             </div>
             <div className="contact-grid">
@@ -442,26 +452,38 @@ export default function Home() {
           <div className="ftr-grid">
             <div>
               <img src="/logo-light.png" alt="GroeiKoning" width={215} height={28} />
-              <p>Websites, SEO en advertenties voor MKB en lokale bedrijven.</p>
+              <p>Websites, advertenties en online marketing voor MKB en lokale bedrijven.</p>
             </div>
             <div>
               <p className="mono label">Contact</p>
-              <span className="sel">{site.email}</span>
-              {site.phone && <span className="sel">{site.phone}</span>}
-              <a href={site.calendlyUrl} target="_blank" rel="noopener noreferrer">
+              <a className="ico-link" href={`mailto:${site.email}`}>
+                <MailIcon />
+                {site.email}
+              </a>
+              {site.phone && (
+                <a className="ico-link" href={`tel:${site.phone.replace(/\s/g, "")}`}>
+                  <PhoneIcon />
+                  {site.phone}
+                </a>
+              )}
+              <a className="ico-link" href={site.calendlyUrl} target="_blank" rel="noopener noreferrer">
+                <ArrowIcon />
                 Plan een gesprek
               </a>
             </div>
             <div>
               <p className="mono label">Gegevens</p>
-              <span>{site.address}</span>
-              <span>KvK {site.kvk}</span>
+              <span>KvK: {site.kvk}</span>
+              <span>Btw: {site.btw}</span>
+              {site.iban && <span>Bank: {site.iban}</span>}
             </div>
           </div>
           <p className="big-word" aria-hidden>
-            {"GROEIKONING".split("").map((c, i) => (
-              <span key={i}>{c}</span>
-            ))}
+            <span className="big-word-in">
+              {"GROEIKONING".split("").map((c, i) => (
+                <span key={i}>{c}</span>
+              ))}
+            </span>
           </p>
           <div className="ftr-bottom">
             <span>© {new Date().getFullYear()} GroeiKoning</span>
